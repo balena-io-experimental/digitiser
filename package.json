@@ -11,6 +11,9 @@
     "spi": "~0.1.2",
     "max7219": "~1.0.1"
   },
+  "scripts": {
+  "preinstall": "bash deps.sh"
+  },
   "engines": {
       "node": "0.10.22"
   }
