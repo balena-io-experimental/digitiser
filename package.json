@@ -8,6 +8,7 @@
   "version": "0.0.1",
   "dependencies": {
     "tty.js": "~0.2.13",
+    "spi": "~0.1.2",
     "max7219": "~1.0.1"
   },
   "engines": {
