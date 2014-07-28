@@ -12,6 +12,7 @@ var app = tty.createServer({
 
 app.listen();
 //#######################################
+var MAX7219 = require('max7219');
 
 var disp = new MAX7219("/dev/spidev1.0");
 disp.setDecodeAll();
