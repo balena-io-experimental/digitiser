@@ -1,5 +1,5 @@
-var defaults,settings;
-
+var defaults,settings,parseField;
+settings {};
 defaults = {
   endpoint: 'https://api.bitcoinaverage.com/ticker/global/GBP/',
   field: 'last',
@@ -15,7 +15,7 @@ disp.setScanLimit(8);
 disp.startup();
 
 settings.endpoint = process.env['DIGITISER_ENDPOINT'] || defaults.endpoint;
- settings.field = process.env['DIGITISER_VALUE_FIELD'] || defaults.field;
+settings.field = process.env['DIGITISER_VALUE_FIELD'] || defaults.field;
 settings.interval = process.env['DIGITISER_INTERVAL'] || defaults.interval
 
 setInterval(update, settings.interval * 1000)
@@ -25,9 +25,10 @@ setInterval(update, settings.interval * 1000)
 function update() {
     request(settings.endpoint, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            console.log(body) // Print the google web page.
+            var obj = JSON.parse(body)
+            var field = parseField(obj, settings.field);
             disp.clearDisplay(function() {
-                displayNumber(body[settings.field], function(){});
+                displayNumber(field, function(){});
             });
         }
     });
@@ -50,3 +51,17 @@ function displayNumber(number,callback) {
 }
     callback();
 }
+
+//parse the field from the api endpoint
+parseField = function(obj, field) {
+  var _i, _len, _ref;
+  _ref = field.split('.');
+  for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+    field = _ref[_i];
+    if ((obj == null) || typeof obj !== 'object') {
+      return null;
+    }
+    obj = obj[field];
+  }
+  return obj;
+};
