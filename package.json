@@ -9,7 +9,8 @@
   "dependencies": {
     "tty.js": "~0.2.13",
     "spi": "~0.1.2",
-    "max7219": "~1.0.1"
+    "max7219": "~1.0.1",
+    "request": "~2.36.0"
   },
   "scripts": {
   "preinstall": "bash deps.sh"
