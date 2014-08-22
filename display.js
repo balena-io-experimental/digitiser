@@ -1,3 +1,4 @@
+//digitiser.js
 var defaults,settings,parseField;
 var request = require('request');
 var MAX7219 = require('max7219');
