@@ -31,7 +31,13 @@ function update() {
             var obj = JSON.parse(body)
             var field = parseField(obj, settings.field);
             disp.clearDisplay(function() {
+              if (typeof field === 'object'){
+                displayNumber(field.length, function(){});
+                console.log(field.length);
+              } else {
                 displayNumber(field, function(){});
+                console.log('display showing '+field);
+              }
             });
         }
     });
