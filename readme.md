@@ -1,6 +1,6 @@
 #Digitiser for a Web Endpoint
 
-Digitiser is a resin.io powered application that displays the number of currently connected devices on resin.io using a 8 digit 7-segment display.
+A tool for displaying integer values from a JSON endpoint on a MAX7219 7-segment display.
 
 ##Connections
 
